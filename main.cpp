@@ -10,14 +10,14 @@
 
 
 
-/* this project was created by Muhammet Cömert
+/* this project was created by Muhammet CÃ¶mert
 
 
 /*kutularin baslangic ve bitis kordinatlarini yazdirirken; baslangic noktasi kutunun sol alt kosesi,
 
 bitis noktasida kutunun sag ust kosesi olarak yazdirilmistir. ayrica kutulari yerlestirirken (0,0) noktasindan
  
-baslayip saga dogru yerlestirerek devam ediliyor. kutunun bitis noktasýnýn x degeri ayni zamanda bir sonraki kutunun
+baslayip saga dogru yerlestirerek devam ediliyor. kutunun bitis noktasÄ±nÄ±n x degeri ayni zamanda bir sonraki kutunun
 
 baslangic noktasinin x degeri olarak belirlenmektedir. ornegin kutunun bitis noktasi (a,b) ise bir sonraki kutunun
  
@@ -87,10 +87,10 @@ public:
 
 	Space();                                             // parametresiz kurucu
 	Space(int, int);                                     // parametreli kurucu
-	void fillRandomBox(int, int, int);                   // kutulari yerlestiren Üye fonksiyon
-	void printBoxCoordinates(int, int,int, int, int);    // kutularin baslangic-bitis kordinatlarini yazan Üye fonksiyon
-	void printCenterOfMass(double,double,double);        // kutulari agirlik merkezini bulan Üye fonksiyon	                                 
-	void uzayCiz();                                      // atama sonrasi kutularin üye uzaydaki yerini veren fonksiyon ****
+	void fillRandomBox(int, int, int);                   // kutulari yerlestiren Ãœye fonksiyon
+	void printBoxCoordinates(int, int,int, int, int);    // kutularin baslangic-bitis kordinatlarini yazan Ãœye fonksiyon
+	void printCenterOfMass(double,double,double);        // kutulari agirlik merkezini bulan Ãœye fonksiyon	                                 
+	void uzayCiz();                                      // atama sonrasi kutularin Ã¼ye uzaydaki yerini veren fonksiyon ****
 
 private:
 
@@ -151,7 +151,7 @@ int main()
 	return 0;
 
 }
-//--------------------------Coordinate.cpp dosyasý-----------------------------------------------------.
+//--------------------------Coordinate.cpp dosyasÄ±-----------------------------------------------------.
 Coordinate::Coordinate()
 {
 	cout << "parametresiz Coordinate kurucusu cagrildi" << endl;
@@ -272,7 +272,7 @@ void Space::fillRandomBox(int kutuSayisi, int maxBoyut, int yogunluk)
 		kutu.setGenislik(a);                                // kutu genisligini setler
 		kutu.setYukseklik(b);								// kutu yuksekligini setler
 		kutu.setYogunluk(yogunluk);                         // kutu yogunlugunu setler
-		kutu.setKutuStartCordinate();                       // kutu kordinatlarýný setler
+		kutu.setKutuStartCordinate();                       // kutu kordinatlarÄ±nÄ± setler
 		baslangic_x = kutu.getKutuStartCordinateX();        // kutunun boyut degeri
 		baslangic_y = kutu.getKutuStartCordinateY();        // kutunun boyut degeri
 
@@ -289,6 +289,10 @@ void Space::fillRandomBox(int kutuSayisi, int maxBoyut, int yogunluk)
 		printBoxCoordinates(i + 1, temp1,temp2, temp1 + a, temp2+b);    // kutunun kordinatlarini yazdirir
 		cout << endl;
 
+		toplamMX += ((temp1 + ((double(a)) / 2))*(a*b*yogunluk));      // toplam kutle*uzunluk degerini tutan sayac
+		toplamMY += ((temp2 + ((double(b)) / 2))*(a*b*yogunluk));      // toplam kutle*uzunluk degerini tutan sayac
+		toplamM += a * b* yogunluk;                                    // toplam kutle degerini tutan sayac
+
 		if ((temp1 + maxBoyut) < uzayGenisligi)
 		{
 			temp1 += baslangic_x;                                   // yeni baslangic x degerini veririr
@@ -299,9 +303,6 @@ void Space::fillRandomBox(int kutuSayisi, int maxBoyut, int yogunluk)
 		    temp2 += maxBoyut;
 		}
 
-		toplamMX += ((temp1 + ((double(a)) / 2))*(a*b*yogunluk));      // toplam kutle*uzunluk degerini tutan sayac
-		toplamMY += ((temp2 + ((double(b)) / 2))*(a*b*yogunluk));                                      // toplam kutle*uzunluk degerini tutan sayac
-		toplamM += a * b* yogunluk;                                    // toplam kutle degerini tutan sayac
 	}
 
 	printCenterOfMass(toplamMX, toplamMY, toplamM);                        // agirlik merkezini bulur
@@ -325,7 +326,7 @@ void Space::printCenterOfMass(double mx, double my, double m)                   
 	cout << "------------------------------------------------------------\n";
 }
 
-void Space::uzayCiz()     // uzayin kutu yerleþimini gosterir. 
+void Space::uzayCiz()     // uzayin kutu yerleÅŸimini gosterir. 
 {
 
 	int k;  int l;
