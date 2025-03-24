@@ -178,7 +178,14 @@ public:
 			else
 			{
 				temp1 = 0;
-				temp2 += maxSize;
+				if ((temp2 + maxSize) < spaceHeight)  
+				{
+					temp2 += maxSize;
+				}
+				else
+				{
+					cout << "Hata: Y ekseninde taşma var!" << endl;
+				}
 			}
 
 		}
